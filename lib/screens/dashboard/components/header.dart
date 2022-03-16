@@ -15,13 +15,26 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        if (!Responsive.isDesktop(context))
-          IconButton(
-            icon: Icon(Icons.menu),
-            onPressed: context.read<MenuController>().controlMenu,
-          ),
+        // if (!Responsive.isDesktop(context))
+        //   IconButton(
+        //     icon: Icon(Icons.menu),
+        //     onPressed: context
+        //         .read<MenuController>()
+        //         .controlMenu,
+        //   ),
         if (!Responsive.isMobile(context))
-          IconButton(onPressed: () => {}, icon: Icon(Icons.add),),
+          InkWell(
+            onTap: () {},
+            child: Container(
+              padding: EdgeInsets.all(defaultPadding * 0.45),
+              margin: EdgeInsets.symmetric(horizontal: defaultPadding / 2,vertical: defaultPadding / 2),
+              decoration: BoxDecoration(
+                color: primaryColor,
+                borderRadius: const BorderRadius.all(Radius.circular(10)),
+              ),
+              child: Icon(Icons.add),
+            ),
+          ),
         if (!Responsive.isMobile(context))
           Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
         Expanded(child: SearchField()),
@@ -58,7 +71,7 @@ class ProfileCard extends StatelessWidget {
           if (!Responsive.isMobile(context))
             Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
+              const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
               child: Text("Angelina Jolie"),
             ),
           Icon(Icons.keyboard_arrow_down),

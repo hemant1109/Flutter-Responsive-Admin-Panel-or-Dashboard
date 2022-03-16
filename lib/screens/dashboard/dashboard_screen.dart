@@ -1,10 +1,8 @@
 import 'package:admin/responsive.dart';
-import 'package:admin/screens/dashboard/components/my_fields.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
 import 'components/header.dart';
-
 import 'components/recent_files.dart';
 import 'components/storage_details.dart';
 
@@ -16,16 +14,17 @@ class DashboardScreen extends StatelessWidget {
         padding: EdgeInsets.all(defaultPadding),
         child: Column(
           children: [
+            SizedBox(height: defaultPadding * 5),
             Header(),
             SizedBox(height: defaultPadding),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
-                  flex: 5,
+                  // flex: 5,
                   child: Column(
                     children: [
-                     // MyFiles(),
+                      // MyFiles(),
                       SizedBox(height: defaultPadding),
                       RecentFiles(),
                       if (Responsive.isMobile(context))
