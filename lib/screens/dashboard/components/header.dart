@@ -21,14 +21,11 @@ class Header extends StatelessWidget {
             onPressed: context.read<MenuController>().controlMenu,
           ),
         if (!Responsive.isMobile(context))
-          Text(
-            "Dashboard",
-            style: Theme.of(context).textTheme.headline6,
-          ),
+          IconButton(onPressed: () => {}, icon: Icon(Icons.add),),
         if (!Responsive.isMobile(context))
           Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
         Expanded(child: SearchField()),
-        ProfileCard()
+        //ProfileCard()
       ],
     );
   }
