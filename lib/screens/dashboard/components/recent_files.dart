@@ -4,14 +4,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../constants.dart';
+import 'header.dart';
 
-class RecentFiles extends StatelessWidget {
-  const RecentFiles({
+class RecentFiles extends StatefulWidget {
+  RecentFiles({
     Key? key,
   }) : super(key: key);
 
+  final _recentFiles = _RecentFiles();
+
+  addNewItem(RecentFile data) {
+    _recentFiles.addNewItem(data);
+  }
+
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _recentFiles;
+  }
+}
+
+class _RecentFiles extends State<RecentFiles> {
   @override
   Widget build(BuildContext context) {
+    return _recentFile();
+  }
+
+  Widget _recentFile() {
     return Container(
       padding: EdgeInsets.all(defaultPadding),
       decoration: BoxDecoration(
@@ -50,6 +69,12 @@ class RecentFiles extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void addNewItem(RecentFile data) {
+    setState(() {
+      demoRecentFiles.add(data);
+    });
   }
 }
 

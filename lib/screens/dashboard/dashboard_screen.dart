@@ -7,6 +7,8 @@ import 'components/recent_files.dart';
 import 'components/storage_details.dart';
 
 class DashboardScreen extends StatelessWidget {
+  final recentFiles = RecentFiles();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -15,7 +17,7 @@ class DashboardScreen extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: defaultPadding * 5),
-            Header(),
+            Header(recentFiles.addNewItem),
             SizedBox(height: defaultPadding),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,7 +28,7 @@ class DashboardScreen extends StatelessWidget {
                     children: [
                       // MyFiles(),
                       SizedBox(height: defaultPadding),
-                      RecentFiles(),
+                      recentFiles,
                       if (Responsive.isMobile(context))
                         SizedBox(height: defaultPadding),
                       if (Responsive.isMobile(context)) StarageDetails(),
