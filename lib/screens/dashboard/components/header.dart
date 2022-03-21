@@ -11,7 +11,8 @@ class Header extends StatelessWidget {
 
   Header(
     this.addNewItem, {
-    Key? key, this.data,
+    Key? key,
+    this.data,
   }) : super(key: key);
 
   @override
@@ -99,7 +100,7 @@ class SearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       decoration: InputDecoration(
         hintText: "Search",
         fillColor: secondaryColor,
@@ -156,87 +157,112 @@ Future _showPopup(context, Function(RecentFile data) setData) {
                         ),
                       ),
                     ),
-                    Form(
-                      key: _formKey,
-                      child: SingleChildScrollView(
-                          child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  ElevatedButton.icon(
-                                    icon: Icon(Icons.upload),
-                                    onPressed: () {},
-                                    label: Text("Upload"),
-                                  ), // button 1
-                                  ElevatedButton.icon(
-                                    icon: Icon(Icons.upload),
-                                    onPressed: () {},
-                                    label: Text("Upload"),
-                                  ), // button 2
-                                ]),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                //icon: Icon(Icons.date_range_outlined),
-                                labelText: 'Date',
+                    SingleChildScrollView(
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: <Widget>[
+                                    ElevatedButton.icon(
+                                      icon: Icon(Icons.upload),
+                                      onPressed: () {},
+                                      label: Text("Upload"),
+                                    ), // button 1
+                                    ElevatedButton.icon(
+                                      icon: Icon(Icons.upload),
+                                      onPressed: () {},
+                                      label: Text("Upload"),
+                                    ), // button 2
+                                  ]),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: TextFormField(
+                                decoration: InputDecoration(
+                                  //icon: Icon(Icons.date_range_outlined),
+                                  labelText: 'Date',
+                                ),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter date';
+                                  }
+                                  return null;
+                                },
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                //icon: Icon(Icons.account_circle),
-                                labelText: 'ADELI',
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: TextFormField(
+                                decoration: InputDecoration(
+                                  //icon: Icon(Icons.account_circle),
+                                  labelText: 'ADELI',
+                                ),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter ADELI';
+                                  }
+                                  return null;
+                                },
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                //icon: Icon(Icons.account_circle),
-                                labelText: 'NSS',
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: TextFormField(
+                                decoration: InputDecoration(
+                                  //icon: Icon(Icons.account_circle),
+                                  labelText: 'NSS',
+                                ),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter NSS';
+                                  }
+                                  return null;
+                                },
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                //icon: Icon(Icons.account_circle),
-                                labelText: 'ONC',
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: TextFormField(
+                                decoration: InputDecoration(
+                                  //icon: Icon(Icons.account_circle),
+                                  labelText: 'ONC',
+                                ),
+                                controller: oncTextController,autovalidateMode: AutovalidateMode.onUserInteraction,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter ONC';
+                                  }
+                                  return null;
+                                },
                               ),
-                              controller: oncTextController,
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ElevatedButton(
-                              child: Text("OK"),
-                              onPressed: () {
-                                if (_formKey.currentState!.validate()) {
-                                  _formKey.currentState!.save();
-                                  setData(RecentFile(
-                                    title: oncTextController.text,
-                                    icon: "assets/icons/xd_file.svg",
-                                    date: "01-03-2021",
-                                    size: "3.5mb",
-                                  ));
-                                  Navigator.of(context).pop();
-                                }
-                              },
-                            ),
-                          )
-                        ],
-                      )),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ElevatedButton(
+                                child: Text("OK"),
+                                onPressed: () {
+                                  if (_formKey.currentState!.validate()) {
+                                    _formKey.currentState!.save();
+                                    setData(RecentFile(
+                                      title: oncTextController.text,
+                                      icon: "assets/icons/xd_file.svg",
+                                      date: "01-03-2021",
+                                      size: "3.5mb",
+                                    ));
+                                    Navigator.of(context).pop();
+                                  }
+                                },
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
                     ),
                   ],
                 ),
