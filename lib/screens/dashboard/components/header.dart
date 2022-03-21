@@ -188,6 +188,8 @@ Future _showPopup(context, Function(RecentFile data) setData) {
                                   //icon: Icon(Icons.date_range_outlined),
                                   labelText: 'Date',
                                 ),
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return 'Please enter date';
@@ -203,6 +205,8 @@ Future _showPopup(context, Function(RecentFile data) setData) {
                                   //icon: Icon(Icons.account_circle),
                                   labelText: 'ADELI',
                                 ),
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return 'Please enter ADELI';
@@ -218,6 +222,8 @@ Future _showPopup(context, Function(RecentFile data) setData) {
                                   //icon: Icon(Icons.account_circle),
                                   labelText: 'NSS',
                                 ),
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return 'Please enter NSS';
@@ -233,7 +239,9 @@ Future _showPopup(context, Function(RecentFile data) setData) {
                                   //icon: Icon(Icons.account_circle),
                                   labelText: 'ONC',
                                 ),
-                                controller: oncTextController,autovalidateMode: AutovalidateMode.onUserInteraction,
+                                controller: oncTextController,
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return 'Please enter ONC';
